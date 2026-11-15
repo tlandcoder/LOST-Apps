@@ -1,0 +1,25 @@
+name: Build LOST Apps
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Xcode Version
+      run: sudo xcode-select -s /Applications/Xcode.app
+
+    - name: Build Swift Package
+      run: swift build -c release
+
+    - name: Upload Binary Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: LOST-Compiled-Binary
+        path: .build/release/LOSTTools
