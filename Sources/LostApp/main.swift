@@ -6,4 +6,4 @@ let testFile = FileManager.default.temporaryDirectory.appendingPathComponent("19
 try? "test data".write(to: testFile, atomically: true, encoding: .utf8)
 
 let renamed = SMAREngine.shared.smartRename(fileURL: testFile)
-print("Successfully tested rename to: $({renamed?.lastPathComponent ?? "nil"})")
+print("Successfully tested rename to: \((renamed?.lastPathComponent ?? "nil"))")
